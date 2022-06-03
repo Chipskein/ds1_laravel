@@ -1,9 +1,19 @@
 ## ds1 laravel
 
+### Run first time
+
+            composer update 
+            cp .env.example .env
+            php artisan key:generate
+            php artisan serve
+### Run normally
+            php artisan serve
+
+
+
 Prezados, 
 
 Desenvolver um sistema acadêmico simples, sem login:
-
 
 -Realizar um cadastro simples de disciplinas, carga horária.
 -Realizar cadastro de alunos, email, com matricula, nome.
