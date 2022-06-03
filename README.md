@@ -9,7 +9,6 @@
 ### Run normally
             php artisan serve
 
-
 ## Enunciado
 
 #### Prezados, 
