@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Disciplines_Students extends Model
+class Classes extends Model
 {
     use HasFactory;
     protected $fillable = [
         'discipline',
         'student',
-        'status',
-        'start_date',
-        'end_date',
-        'final_note',
-        'final_freq',
+        'date',
+        'isPresent',
     ];
 }

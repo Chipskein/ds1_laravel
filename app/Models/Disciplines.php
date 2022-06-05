@@ -10,6 +10,7 @@ class Disciplines extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'teacher',
         'name',
         'hours',
     ];
