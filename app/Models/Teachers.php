@@ -12,4 +12,6 @@ class Teachers extends Model
         'id',
         'name',
     ];
+    public $table='Teachers';
+    public $timestamps=false;
 }

@@ -22,8 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',"App\Http\Controllers\PageController@showHome");
 Route::controller(Teachers::class)->group(function () {
     Route::get("/teachers", "index");
-    Route::get("/teachers/{id}", "show");
     Route::post("/teachers","create");
+    Route::get("/teachers/edit/{id}","edit");
+    Route::post("/teachers/edit/{id}","update");
 });
 Route::controller(Students::class)->group(function () {
     Route::get("/students", "index");
