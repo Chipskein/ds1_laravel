@@ -1,0 +1,38 @@
+body {
+    margin: 50px;
+    padding: 0px;
+}
+
+table{
+    border-spacing: 0px;
+    position: relative;
+    width: 100%;
+};
+
+th{
+    font-family: 'Mulish';
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--DarkGray);
+    border: 1px solid #5C9F5C;
+    border-left: 0px;
+    border-right: 0px;
+    height: 40px;
+    width: 600px;
+}
+
+tr{
+    transition: all ease 0.5s;
+    cursor: pointer;
+};
+
+td{
+    font-family: 'Mulish';
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--lightGray3);
+};
