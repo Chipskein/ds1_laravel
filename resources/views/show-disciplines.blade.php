@@ -67,7 +67,7 @@ form{
             <td class='td'>Silvio</td>
             <td class='td'>10 horas</td>
             <td class='td'>Roberto</td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
+            <td class='td'><a href='/disciplines/edit/1'><img class='plus-button-img' src=/imgs/edit.png></a></td>
             <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
         </tr>
         

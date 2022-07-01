@@ -19,15 +19,11 @@
 
 <x-header/>
 
-<form action="/teachers" method="post">
-    <p>Matricula</p>
-    <input type="text" name="id">
+<form action="/discipline" method="post">
     <p>Nome</p>
     <input type="text" name="name">
-    <p>Email</p>
-    <input type="text" name="email">
-    <p>Disciplinas</p>
-    <select name="discipline" id=""><option>não sei</option></select>
+    <p>Professor</p>
+    <select name="teacher" id=""><option>não sei</option></select>
     <p>Carga horária</p>
     <input type="text" name="carga">
     <input type="submit" value="Enviar">

@@ -70,7 +70,7 @@ form{
             <td class='td'>Math</td>
             <td class='td'>Ciro</td>
             <td class='td'>10</td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
+            <td class='td'><a href='/classes/edit/1'><img class='plus-button-img' src=/imgs/edit.png></a></td>
             <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
             <td class='td'><a><img class='plus-button-img' src=/imgs/plus.png></a></td>      
         </tr> 

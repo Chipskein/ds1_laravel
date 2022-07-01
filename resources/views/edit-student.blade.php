@@ -19,7 +19,7 @@
 
 <x-header/>
 
-<form action="/teachers" method="post">
+<form action="/students" method="post">
     <p>Matricula</p>
     <input type="text" name="id">
     <p>Nome</p>

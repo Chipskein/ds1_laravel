@@ -56,7 +56,7 @@ class Classes extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('edit-classe');
     }
 
     /**

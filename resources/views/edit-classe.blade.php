@@ -20,16 +20,14 @@
 <x-header/>
 
 <form action="/teachers" method="post">
-    <p>Matricula</p>
-    <input type="text" name="id">
     <p>Nome</p>
     <input type="text" name="name">
-    <p>Email</p>
-    <input type="text" name="email">
     <p>Disciplinas</p>
     <select name="discipline" id=""><option>não sei</option></select>
-    <p>Carga horária</p>
-    <input type="text" name="carga">
+    <p>Professor</p>
+    <select name="teacher" id=""><option>não sei</option></select>
+    <p>Alunos (Vamos ter que fazer tipo uma tabela de alunos aqui dentro e ele pode tirar e add quem ele quiser)</p>
+    <select name="teacher" id=""><option>não sei</option></select>
     <input type="submit" value="Enviar">
 </form>
 

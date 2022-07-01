@@ -29,15 +29,19 @@ Route::controller(Teachers::class)->group(function () {
 Route::controller(Students::class)->group(function () {
     Route::get("/students", "index");
     Route::get("/students/{id}", "show");
+    Route::get("/students/edit/{id}","edit");
+
     Route::post("/students","create");
 });
 Route::controller(Disciplines::class)->group(function () {
     Route::get("/disciplines", "index");
     Route::get("/disciplines/{id}", "show");
+    Route::get("/disciplines/edit/{id}","edit");
     Route::post("/disciplines","create");
 });
 Route::controller(Classes::class)->group(function () {
     Route::get("/classes", "index");
+    Route::get("/classes/edit/{id}","edit");
     Route::get("/classes/{id}", "show");
     Route::post("/classes","create");
 });
