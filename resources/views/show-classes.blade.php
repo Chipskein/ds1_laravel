@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link rel="stylesheet" href="/css/app.css">
         <style>
             table{
                 border-spacing: 0px;
@@ -40,46 +41,40 @@ td {
 form{ 
     margin:50px;
 }
+.plus-button-img {
+    width: 30px;
+    height:30px;
+  }
         </style>
 </head>
 
 <x-header/>
 
 <form action="/teachers" method="post">
+    <h1>Turmas</h1>
     @csrf
     <table>
         <theader>
             <tr>
-                <th>Matricula</th>
                 <th>Nome</th>
-                <th>Email</th>
-                <th>Total Disciplinas</th>
-                <th>Carga horária</th>
+                <th>Disciplina</th>
+                <th>Professor</th>
+                <th>Nº de alunos</th>
                 <th>Editar</th>
                 <th>Excluir</th>
+                <th>Ver mais</th>
             </tr>
         </theader>
         <tr>
-            <td class='td'>11030336</td>
             <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
+            <td class='td'>Math</td>
+            <td class='td'>Ciro</td>
             <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'>Ed</td>
-            <td class='td'>Ex</td>
-            
-        <tr>
-        <tr>
-            <td class='td'>11030336</td>
-            <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
-            <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'>Ed</td>
-            <td class='td'>Ex</td>
-            
-        <tr>
-    </table>
+            <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
+            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
+            <td class='td'><a><img class='plus-button-img' src=/imgs/plus.png></a></td>      
+        </tr> 
+   </table>
     <input type="text" name="name">
     <input type="submit" value="Enviar">
 </form>

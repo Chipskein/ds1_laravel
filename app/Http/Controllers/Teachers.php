@@ -14,7 +14,7 @@ class Teachers extends Controller
      */
     public function index()
     {
-        return view('formTeachers');
+        return view('show-teachers');
     }
 
     public function create(Request $request)
@@ -34,7 +34,7 @@ class Teachers extends Controller
     public function edit($id)
     {
         $name=ModelsTeachers::where('id',$id)->first()->name;
-        return view('formEditTeacher',['name'=>$name]);
+        return view('edit-teacher',['name'=>$name]);
     }
 
     public function update(Request $request, $id)

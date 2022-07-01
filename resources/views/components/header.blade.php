@@ -4,6 +4,9 @@
 
         <title>Laravel</title>
         <style>
+            a{
+                text-decoration:none;
+            }
     header {
         background-color: #5C9F5C;
         width: 100%;
@@ -41,10 +44,10 @@
     <div class='header'>
     <p class='headerTitle'>Sistema acadêmico</p>
     <div class='headerNav'>
-        <a class='navItem'>Alunos</a>
-        <a class='navItem'>Professores</a>
-        <a class='navItem'>Disciplinas</a>
-        <a class='navItem'>Turmas</a>
+        <a href="{{url('/students')}}" class='navItem'>Alunos</a>
+        <a href="{{url('/teachers')}}" class='navItem'>Professores</a>
+        <a href="{{url('/disciplines')}}" class='navItem'>Disciplinas</a>
+        <a href="{{url('/classes')}}" class='navItem'>Turmas</a>
     </div>
     </div>
 </header>

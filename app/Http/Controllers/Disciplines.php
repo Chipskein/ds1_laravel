@@ -13,7 +13,7 @@ class Disciplines extends Controller
      */
     public function index()
     {
-        //
+        return view('show-disciplines');
     }
 
     /**
