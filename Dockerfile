@@ -3,10 +3,12 @@ FROM composer:2.3.7
 COPY . /app
 WORKDIR /app
 EXPOSE 8080
-# keep running DOCKER CONTAINER
-RUN echo "TESTANDO DEVCONTAINER"
+
+RUN composer install
 CMD tail -f /dev/null
-#CMD [ "php", "artisan","serve","--host","0.0.0.0","--port=8080"]
 
 #docker build -t chipskein/laravel .
-#docker run -p 3000:8080 chipskein/laravel
+#docker run -p 8080:8080 -v $(pwd):/app chipskein/laravel
+#docker ps
+#docker exec -it ${container_name}
+#php artisan serve --host 0.0.0.0 --port=8080
