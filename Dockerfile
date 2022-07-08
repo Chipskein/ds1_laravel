@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 8080
 # keep running DOCKER CONTAINER
 RUN echo "TESTANDO DEVCONTAINER"
-#CMD tail -f /dev/null
+CMD tail -f /dev/null
 #CMD [ "php", "artisan","serve","--host","0.0.0.0","--port=8080"]
 
 #docker build -t chipskein/laravel .
