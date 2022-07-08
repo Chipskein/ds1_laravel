@@ -1,0 +1,50 @@
+table{
+    border-spacing: 0px;
+    position: relative;
+    width: 100%;
+}
+th{
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000;
+    border: 1px solid #5C9F5C;
+    border-left: 0px;
+    border-right: 0px;
+    height: 40px;
+    width: 600px;
+}
+
+tr{
+    transition: all ease 0.5s;
+    cursor: pointer;
+}
+
+.td, .td-insert {
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #DFD8D8;
+}
+
+.td-insert input.inumber {
+    width: 50px;
+}
+
+form{ 
+    margin:50px;
+}
+.plus-button-img {
+    width: 30px;
+    height:30px;
+}
+.button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #5C9F5C;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

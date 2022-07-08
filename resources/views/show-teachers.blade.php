@@ -5,50 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-        <link rel="stylesheet" href="/css/app.css">
-        <style>
-            table{
-                border-spacing: 0px;
-                position: relative;
-                width: 100%;
-            }
-
-th{
-    font-weight: bold;
-    font-size: 1rem;
-    color: #000;
-    border: 1px solid #5C9F5C;
-    border-left: 0px;
-    border-right: 0px;
-    height: 40px;
-    width: 600px;
-}
-
-tr{
-    transition: all ease 0.5s;
-    cursor: pointer;
-}
-
-td {
-    font-size: 1rem;
-    font-weight: 300;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #DFD8D8;
-}
-form{ 
-    margin:50px;
-}
-.plus-button-img {
-    width: 30px;
-    height:30px;
-  }
-        </style>
+        <link rel="stylesheet" href="/css/tables.css">
 </head>
 
-<x-header/>
+<x-header />
 
 <form action="/teachers" method="post">
     <h1>Professores</h1>
@@ -85,9 +45,17 @@ form{
             <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
             
         <tr>
+        <tr>
+            <td class='td-insert'><input type="text" required name="matricula" placeholder="Matrícula"></td>
+            <td class='td-insert'><input type="text" required name="nome" placeholder="Nome"></td>
+            <td class='td-insert'><input type="email" required name="email" placeholder="Email"></td>
+            <td class='td-insert'></td>
+            <td class='td-insert'><input type="numero" class="inumber" required name="carga" placeholder="00"> horas</td>
+            <td class='td-insert'></td>
+            <td class='td-insert'></td>
+        <tr>
     </table>
-    <input type="text" name="name">
-    <input type="submit" value="Enviar">
+    <input type="submit" class="button" value="Criar novo professor">
 </form>
 
 </html>

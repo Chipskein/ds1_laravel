@@ -5,47 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-        <link rel="stylesheet" href="/css/app.css">
-        <style>
-            table{
-                border-spacing: 0px;
-                position: relative;
-                width: 100%;
-            }
-
-th{
-    font-weight: bold;
-    font-size: 1rem;
-    color: #000;
-    border: 1px solid #5C9F5C;
-    border-left: 0px;
-    border-right: 0px;
-    height: 40px;
-    width: 600px;
-}
-
-tr{
-    transition: all ease 0.5s;
-    cursor: pointer;
-}
-
-td {
-    font-size: 1rem;
-    font-weight: 300;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #DFD8D8;
-}
-form{ 
-    margin:50px;
-}
-.plus-button-img {
-    width: 30px;
-    height:30px;
-  }
-        </style>
+        <link rel="stylesheet" href="/css/tables.css">
 </head>
 
 <x-header/>
@@ -66,7 +26,7 @@ form{
             </tr>
         </theader>
         <tr>
-            <td class='td'>Silvio</td>
+            <td class='td'>4C</td>
             <td class='td'>Math</td>
             <td class='td'>Ciro</td>
             <td class='td'>10</td>
@@ -74,9 +34,36 @@ form{
             <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
             <td class='td'><a><img class='plus-button-img' src=/imgs/plus.png></a></td>      
         </tr> 
+        <tr>
+            <td class='td'>4C</td>
+            <td class='td-insert'><input type="text" required name="nome" placeholder="Nome turma"></td>
+            <td class='td'>
+                <input list="discp" name="disciplina" id="browser">
+                <datalist id="discp">
+                    <option value="Edge">
+                    <option value="Firefox">
+                    <option value="Chrome">
+                    <option value="Opera">
+                    <option value="Safari">
+                </datalist>
+            </td>
+            <td class='td'>
+                <input list="prof" name="prof" id="browser">
+                <datalist id="prof">
+                    <option value="Edge">
+                    <option value="Firefox">
+                    <option value="Chrome">
+                    <option value="Opera">
+                    <option value="Safari">
+                </datalist>
+            </td>
+            <td class='td'></td>
+            <td class='td'></td>
+            <td class='td'></td>
+        </tr> 
+        
    </table>
-    <input type="text" name="name">
-    <input type="submit" value="Enviar">
+   <input type="submit" class="button" value="Criar nova turma">
 </form>
 
 </html>
