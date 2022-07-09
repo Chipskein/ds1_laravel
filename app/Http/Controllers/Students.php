@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Students as ModelsStudents;
 class Students extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class Students extends Controller
      */
     public function index()
     {
-        return view('show-students');
+        $model=new ModelsStudents();
+        $students=$model->getAll();
+        return view('show-students',['students'=>$students]);
     }
 
     /**

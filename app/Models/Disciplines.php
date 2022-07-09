@@ -21,9 +21,8 @@ class Disciplines extends Model
         $teachers=DB::table("Disciplines")
         ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
         ->select('Disciplines.*','Teachers.name as TeacherName')
-        ->get()
-    ; 
-    return $teachers;
+        ->get(); 
+        return $teachers;
 
     }
 

@@ -10,7 +10,9 @@
 </head>
 
 <x-header/>
-
+<?php
+    var_dump($students);
+?>
 <form action="/teachers" method="post">
     <h1>Alunos</h1>
     @csrf
