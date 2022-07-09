@@ -14,10 +14,8 @@ class Teachers extends Controller
      */
     public function index()
     {
-        $model=new ModelsTeachers();
-        $teste=$model->get();
-        var_dump($teste);
-        //return view('show-teachers');
+        $data=ModelsTeachers::all();
+        return view('show-teachers',['teachers' => $data ]);
     }
 
     public function create(Request $request)

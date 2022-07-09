@@ -3,13 +3,19 @@
 <head>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
         <link rel="stylesheet" href="/css/tables.css">
 </head>
-
 <x-header />
+<?php
+    echo "<pre>";
+    foreach ($teachers as $teacher){
+        var_dump($teacher->id);
+        var_dump($teacher->name);
+    }
+    echo "</pre>";
 
+?>
 <form action="/teachers" method="post">
     <h1>Professores</h1>
     @csrf
@@ -33,7 +39,6 @@
             <td class='td'>10 horas</td>
             <td class='td'><a href='/teachers/edit/1'><img class='plus-button-img' src=/imgs/edit.png></a></td>
             <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-            
         <tr>
         <tr>
             <td class='td'>11030336</td>
