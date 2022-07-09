@@ -14,7 +14,10 @@ class Teachers extends Controller
      */
     public function index()
     {
-        return view('show-teachers');
+        $model=new ModelsTeachers();
+        $teste=$model->get();
+        var_dump($teste);
+        //return view('show-teachers');
     }
 
     public function create(Request $request)
