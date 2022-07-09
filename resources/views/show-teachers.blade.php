@@ -7,15 +7,6 @@
         <link rel="stylesheet" href="/css/tables.css">
 </head>
 <x-header />
-<?php
-    echo "<pre>";
-    foreach ($teachers as $teacher){
-        var_dump($teacher->id);
-        var_dump($teacher->name);
-    }
-    echo "</pre>";
-
-?>
 <form action="/teachers" method="post">
     <h1>Professores</h1>
     @csrf
@@ -31,33 +22,24 @@
                 <th>Excluir</th>
             </tr>
         </theader>
+
+        @foreach ($teachers as $teacher)
+            <tr>
+                <td class='td'>{{$teacher->id}}</td>
+                <td class='td'>{{$teacher->name}}</td>
+                <td class='td'>{{$teacher->email}}</td>
+                <td class='td'>{{$teacher->DisciplineQt}}</td>
+                <td class='td'>{{$teacher->ch}}</td>
+                <td class='td'><a href='/teachers/edit/{{$teacher->id}}'><img class='plus-button-img' src=/imgs/edit.png></a></td>
+                <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
+            <tr>      
+        @endforeach
         <tr>
-            <td class='td'>11030336</td>
-            <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
-            <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'><a href='/teachers/edit/1'><img class='plus-button-img' src=/imgs/edit.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-        <tr>
-        <tr>
-            <td class='td'>11030336</td>
-            <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
-            <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-            
-        <tr>
-        <tr>
-            <td class='td-insert'><input type="text" required name="matricula" placeholder="Matrícula"></td>
-            <td class='td-insert'><input type="text" required name="nome" placeholder="Nome"></td>
-            <td class='td-insert'><input type="email" required name="email" placeholder="Email"></td>
-            <td class='td-insert'></td>
-            <td class='td-insert'><input type="numero" class="inumber" required name="carga" placeholder="00"> horas</td>
-            <td class='td-insert'></td>
-            <td class='td-insert'></td>
+            <form action="/teachers" method="post">
+                <td class='td-insert'><input type="text" required name="name" placeholder="Nome"></td>
+                <td class='td-insert'><input type="email" required name="email" placeholder="Email"></td>
+            </form>
+
         <tr>
     </table>
     <input type="submit" class="button" value="Criar novo professor">
