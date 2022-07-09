@@ -9,7 +9,6 @@
 </head>
 
 <x-header />
-
 <form action="/teachers" method="post">
     <h1>Disciplinas</h1>
     @csrf
@@ -23,24 +22,25 @@
                 <th>Excluir</th>
             </tr>
         </theader>
+        @foreach ( $disciplines as $discipline )
+            <tr>
+                <td class='td'>{{$discipline->name}}</td>
+                <td class='td'>{{$discipline->hours}}</td>
+                <td class='td'>{{$discipline->TeacherName}}</td>
+                <td class='td'><a href='/disciplines/edit/{{$discipline->id}}'><img class='plus-button-img' src=/imgs/edit.png> </a> </td> 
+                <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png> </a> </td> 
+            </tr>     
+        @endforeach
         <tr>
-            <td class='td'>Silvio</td>
-            <td class='td'>10 horas</td>
-            <td class='td'>Roberto</td>
-            <td class='td'><a href='/disciplines/edit/1'><img class='plus-button-img' src=/imgs/edit.png> </a> </td> <td
-                        class='td'><a><img class='plus-button-img' src=/imgs/minus.png> </a> </td> </tr> <tr>
             <td class='td-insert'><input type="text" required name="nome" placeholder="Nome"></td>
             <td class='td-insert'><input type="numero" class="inumber" required name="carga" placeholder="00"> horas
             </td>
             <td class='td-insert'>
-                <input list="browsers" name="prof" id="browser">
-                <datalist id="browsers">
-                    <option value="Edge">
-                    <option value="Firefox">
-                    <option value="Chrome">
-                    <option value="Opera">
-                    <option value="Safari">
-                </datalist>
+                <select id="browsers">
+                    @foreach ( $teachers as $teacher )
+                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                    @endforeach                    
+                </select>
             </td>
             <td class='td'></td>
             <td class='td'></td>

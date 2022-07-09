@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Disciplines as ModelsDisciplines;
+use App\Models\Teachers as ModelsTeachers;
 class Disciplines extends Controller
 {
     /**
@@ -13,7 +14,10 @@ class Disciplines extends Controller
      */
     public function index()
     {
-        return view('show-disciplines');
+        $model=new ModelsDisciplines();
+        $teachers=ModelsTeachers::get();
+        $disciplines=$model->getAll();
+        return view('show-disciplines',['teachers'=>$teachers,'disciplines'=>$disciplines]);
     }
 
     /**

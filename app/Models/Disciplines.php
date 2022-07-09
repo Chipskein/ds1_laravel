@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Teachers as ModelsTeachers;
-
+use Illuminate\Support\Facades\DB;
 class Disciplines extends Model
 {
     use HasFactory;
@@ -15,8 +15,16 @@ class Disciplines extends Model
         'name',
         'hours',
     ];
-    function __construct() {
-        $this->belongsTo(ModelsTeachers::class,'teacher','id','disciplines');
+    public function getAll()
+    {
+
+        $teachers=DB::table("Disciplines")
+        ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
+        ->select('Disciplines.*','Teachers.name as TeacherName')
+        ->get()
+    ; 
+    return $teachers;
+
     }
 
 }
