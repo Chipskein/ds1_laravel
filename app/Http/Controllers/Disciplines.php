@@ -29,7 +29,7 @@ class Disciplines extends Controller
     }
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -75,7 +75,9 @@ class Disciplines extends Controller
      */
     public function edit($id)
     {
-        return view('edit-discipline');
+        $discipline=ModelsTeachers::where('id',$id)->first();
+        $teachers=ModelsTeachers::get();
+        return view('edit-discipline', ['discipline'=>$discipline,'teachers'=>$teachers]);
     }
 
     /**
@@ -87,7 +89,12 @@ class Disciplines extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $disciplines = ModelsDisciplines::find($id);
+        $disciplines->name = $request->name;
+        $disciplines->hours = $request->hours;
+        $disciplines->teacher = $request->teacher;
+        $disciplines->save();
+        return redirect('/disciplines');
     }
 
     /**
