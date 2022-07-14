@@ -18,16 +18,20 @@
 </head>
 
 <x-header/>
-
+<?php
+    var_dump($disciplines);
+?>
 <form action="/teachers" method="post">
-    <p>Matricula</p>
-    <input type="text" name="id">
     <p>Nome</p>
-    <input type="text" name="name">
+    <input type="text" name="name" value='{{$teacher->name}}' >
     <p>Email</p>
-    <input type="text" name="email">
+    <input type="text" name="email" value='{{$teacher->email}}' >
     <p>Disciplinas</p>
-    <select name="discipline" id=""><option>não sei</option></select>
+    <select id="discipline">
+                    @foreach ( $disciplines as $discipline )
+                        <option value={{$discipline->id}}>{{$discipline->name}}</option>
+                    @endforeach                    
+                </select>
     <p>Carga horária</p>
     <input type="text" name="carga">
     <input type="submit" value="Enviar">

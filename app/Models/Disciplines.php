@@ -23,7 +23,6 @@ class Disciplines extends Model
         ->select('Disciplines.*','Teachers.name as TeacherName')
         ->get(); 
         return $teachers;
-
     }
 
 }
