@@ -75,7 +75,10 @@ class Disciplines extends Controller
      */
     public function edit($id)
     {
-        return view('edit-discipline');
+        $model=new ModelsDisciplines();
+        $discipline=$model->getAllById($id);
+        $teachers=ModelsTeachers::get();
+        return view('edit-discipline',['discipline'=>$discipline,'teachers'=>$teachers]);
     }
 
     /**

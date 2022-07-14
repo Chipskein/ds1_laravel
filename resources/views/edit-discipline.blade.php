@@ -19,13 +19,24 @@
 
 <x-header/>
 
+<?php
+    var_dump($discipline);
+?>
 <form action="/discipline" method="post">
-    <p>Nome</p>
-    <input type="text" name="name">
+    <p>Nome</p><input type="text" name="name" value="{{$discipline->name}}">
     <p>Professor</p>
-    <select name="teacher" id=""><option>não sei</option></select>
-    <p>Carga horária</p>
-    <input type="text" name="carga">
+    <select name="teacher" >
+        @foreach ($teachers as $teacher)
+            @if($teacher->id==$discipline->TeacherId)
+                <option value="{{$teacher->id}}" selected >{{$teacher->name}}</option>
+                @else
+                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+            @endif
+            
+        @endforeach
+        <option value="{{$discipline->TeacherId}}">{{$discipline->TeacherName}}</option>
+    </select>
+    <p>Carga horária</p><input type="text" name="hours" value="{{$discipline->hours}}">
     <input type="submit" value="Enviar">
 </form>
 

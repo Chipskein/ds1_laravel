@@ -27,5 +27,16 @@ class Disciplines extends Model
         return $teachers;
 
     }
+    public function getAllById($id)
+    {
+
+        $teachers=DB::table("Disciplines")
+        ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
+        ->select('Disciplines.*','Teachers.id as TeacherId','Teachers.name as TeacherName')
+        ->where('Disciplines.id',$id)
+        ->first(); 
+        return $teachers;
+
+    }
 
 }
