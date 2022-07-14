@@ -32,6 +32,7 @@ Route::controller(Students::class)->group(function () {
     Route::get("/students/{id}", "show");
     Route::post("/students", "create");
     Route::get("/students/edit/{id}","edit");
+    Route::post("/students/edit/{id}","update");
     Route::post("/students","create");
     Route::get("/students/delete/{id}","delete");
 });

@@ -16,7 +16,10 @@
               }
         </style>
 </head>
+<body>
+    
 
+<<<<<<< HEAD
 <x-header/>
 
 <form action="/disciplines/edit/{{$discipline->id}}" method="post">
@@ -37,5 +40,22 @@
     <p>Carga horária</p><input type="text" name="hours" value="{{$discipline->hours}}">
     <input type="submit" value="Enviar">
 </form>
+=======
+    <x-header/>
+>>>>>>> ad32c76b57538d25e2fccc0d2b604358d4b3ebc7
 
+    <form action="/disciplines/edit/{id}" method="post">
+        <p>Nome</p>
+        <input type="text" name="name" value='{{$discipline->name}}' >
+        <p>Professor</p>
+        <select id="teacher">
+            @foreach ( $teachers as $teacher )
+                <option value={{$teacher->id}}>{{$teacher->name}}</option>
+            @endforeach                    
+        </select>
+        <p>Carga horária</p>
+        <input type="text" name="hours">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
 </html>

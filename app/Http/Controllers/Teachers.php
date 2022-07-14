@@ -41,9 +41,9 @@ class Teachers extends Controller
     public function edit($id)
     {
         $teacher=ModelsTeachers::where('id',$id)->first();
-        $email=$teacher->email;
-        $name=$teacher->name;
-        return view('edit-teacher',['name'=>$name,'email'=>$email]);
+        $model=new ModelsDisciplines();
+        $disciplines=$model->getAll();
+        return view('edit-teacher',['teacher'=>$teacher, 'disciplines'=>$disciplines]);
     }
 
     public function update(Request $request, $id)
