@@ -25,6 +25,7 @@ Route::controller(Teachers::class)->group(function () {
     Route::post("/teachers","create");
     Route::get("/teachers/edit/{id}","edit");
     Route::post("/teachers/edit/{id}","update");
+    Route::get("/teachers/delete/{id}","delete");
 });
 Route::controller(Students::class)->group(function () {
     Route::get("/students", "index");
@@ -38,6 +39,7 @@ Route::controller(Disciplines::class)->group(function () {
     Route::get("/disciplines/{id}", "show");
     Route::get("/disciplines/edit/{id}","edit");
     Route::post("/disciplines","create");
+    Route::get("/disciplines/delete/{id}","delete");
 });
 Route::controller(Classes::class)->group(function () {
     Route::get("/classes", "index");

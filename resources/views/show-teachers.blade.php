@@ -31,7 +31,7 @@
                 <td class='td'>{{$teacher->DisciplineQt}}</td>
                 <td class='td'>{{$teacher->ch}}</td>
                 <td class='td'><a href='/teachers/edit/{{$teacher->id}}'><img class='plus-button-img' src=/imgs/edit.png></a></td>
-                <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
+                <td class='td'><a href='/teachers/delete/{{$teacher->id}}'><img class='plus-button-img' src=/imgs/minus.png></a></td>
             <tr>      
         @endforeach
         <tr>
