@@ -31,9 +31,11 @@ class Teachers extends Controller
         
     }
 
-    public function show($id)
+    public function delete($id)
     {
-        //
+        ModelsDisciplines::where('teacher',$id)->delete();
+        ModelsTeachers::where('id',$id)->delete();
+        return redirect('/teachers');
     }
 
     public function edit($id)

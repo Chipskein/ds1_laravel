@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Disciplines extends Model
 {
     use HasFactory;
+    protected $table = 'Disciplines';
     protected $fillable = [
         'id',
         'teacher',
