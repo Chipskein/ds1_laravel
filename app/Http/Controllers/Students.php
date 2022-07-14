@@ -27,8 +27,8 @@ class Students extends Controller
     {
         //
         $data=[
-            $name=$request->name,
-            $email=$request->email,
+            'name'=>$request->name,
+            'email'=>$request->email,
         ];
         $student=ModelsStudents::create($data)->id;
         return redirect('/students');

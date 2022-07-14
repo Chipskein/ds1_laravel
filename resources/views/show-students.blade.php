@@ -28,6 +28,7 @@
                 <th>Excluir</th>
             </tr>
         </theader>
+
         <tr>
             <td class='td'>11030336</td>
             <td class='td'>Silvio</td>
@@ -37,6 +38,18 @@
             <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
             <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
         <tr>
+        @foreach ($students as $student)
+            <tr>
+                <td class='td'>{{$student->id}}</td>
+                <td class='td'>{{$student->name}}</td>
+                <td class='td'>{{$student->email}}</td>
+                <td class='td'>{{$student->DisciplineQt}}</td>
+                <td class='td'>{{$student->ch}}</td>
+                <td class='td'><a href='/students/edit/{{$student->id}}'><img class='plus-button-img' src=/imgs/edit.png></a></td>
+                <td class='td'><a href='/students/delete/{{$student->id}}'><img class='plus-button-img' src=/imgs/minus.png></a></td>
+            <tr>      
+        @endforeach
+        
         <tr>
             <td class='td-insert'><input type="text" required name="name" placeholder="Nome"></td>
             <td class='td-insert'><input type="email" required name="email" placeholder="Email"></td>
