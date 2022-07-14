@@ -19,17 +19,28 @@
 
 <x-header/>
 
-<form action="/students" method="post">
-    <p>Matricula</p>
-    <input type="text" name="id">
+<form action="/students/edit/{{$student->id}}" method="post">
     <p>Nome</p>
-    <input type="text" name="name">
+    <input type="text" value='{{$student->name}}' name="name">
+
     <p>Email</p>
-    <input type="text" name="email">
+    <input type="text" value='{{$student->email}}' name="email">
+
     <p>Disciplinas</p>
-    <select name="discipline" id=""><option>não sei</option></select>
-    <p>Carga horária</p>
-    <input type="text" name="carga">
+    <select id="discipline">
+        @foreach ( $disciplines as $discipline )
+            <option value={{$discipline->id}}>{{$discipline->TeacherName}}</option>
+        @endforeach
+    </select>
+    <button type='button'>Adicionar</button>
+
+    <div id="discipline-list">
+        <ul>
+            @foreach ( $disciplines as $discipline )
+                <li><input type="checkbox" name="disciplineCheck{{$discipline->id}}" id=""> {{$discipline->name}} ({{$discipline->TeacherName}}) - {{$discipline->hours}} hrs</li>
+            @endforeach
+        </ul>
+    </div>
     <input type="submit" value="Enviar">
 </form>
 

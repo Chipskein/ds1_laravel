@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Students as ModelsStudents;
+use App\Models\Disciplines as ModelsDisciplines;
 use App\Models\Avaliations as ModelsAvaliations;
+use App\Models\Disciplines_Students as Disciplines_Students;
 use App\Models\Classes;
 class Students extends Controller
 {
@@ -33,7 +35,7 @@ class Students extends Controller
             'email'=>$request->email,
         ];
         $student=ModelsStudents::create($data)->id;
-        return redirect('/students');
+        return redirect("/students/edit/$student");
     }
 
     /**
@@ -63,8 +65,13 @@ class Students extends Controller
      */
     public function edit($id)
     {
-        return view('edit-student');
-        
+        $student=ModelsStudents::where('id',$id)->first();
+        $model=new ModelsDisciplines();
+        // $modelDiscStudent=new Disciplines_Students();
+        // $disciplineStudents = $modelDiscStudent->getAll();
+        $disciplines=$model->getAll();
+
+        return view('edit-student',['disciplines'=>$disciplines, 'student'=>$student]);
     }
 
     /**
@@ -76,7 +83,22 @@ class Students extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $modelDiscipline=new ModelsDisciplines();
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+
+        ModelsStudents::where('id',$id)->update($data);
+        $disciplines = $modelDiscipline->getAll();
+        $discRequest = [];
+        foreach ($disciplines as $value) {
+            if($request["disciplineCheck$value[id]"]){
+                $discRequest[] = $request["disciplineCheck$value[id]"];
+            }
+        }
+        print_r($discRequest);
     }
 
     /**

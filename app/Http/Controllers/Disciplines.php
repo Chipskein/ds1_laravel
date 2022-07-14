@@ -34,7 +34,6 @@ class Disciplines extends Controller
      */
     public function create(Request $request)
     {
-        //
 
         $data=[
             'name'=>$request->name,

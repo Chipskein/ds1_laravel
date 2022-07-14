@@ -39,19 +39,5 @@
     <p>Carga horária</p><input type="text" name="hours" value="{{$discipline->hours}}">
     <input type="submit" value="Enviar">
 </form>
-
-    <form action="/disciplines/edit/{id}" method="post">
-        <p>Nome</p>
-        <input type="text" name="name" value='{{$discipline->name}}' >
-        <p>Professor</p>
-        <select id="teacher">
-            @foreach ( $teachers as $teacher )
-                <option value={{$teacher->id}}>{{$teacher->name}}</option>
-            @endforeach                    
-        </select>
-        <p>Carga horária</p>
-        <input type="text" name="hours">
-        <input type="submit" value="Enviar">
-    </form>
 </body>
 </html>

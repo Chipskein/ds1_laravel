@@ -28,7 +28,6 @@ class Teachers extends Controller
         ];
         $teacherId=ModelsTeachers::create($data)->id;
         return redirect('/teachers');
-        
     }
 
     public function delete($id)
@@ -41,17 +40,16 @@ class Teachers extends Controller
     public function edit($id)
     {
         $teacher=ModelsTeachers::where('id',$id)->first();
-        $model=new ModelsDisciplines();
-        $disciplines=$model->getAll();
-        return view('edit-teacher',['teacher'=>$teacher, 'disciplines'=>$disciplines]);
+        return view('edit-teacher',['teacher'=>$teacher]);
     }
 
     public function update(Request $request, $id)
     {
-        $teacher = ModelsTeachers::find($id);
-        $teacher->name = $request->name;
-        $teacher->email = $request->email;
-        $teacher->save();
+        $data=[
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+        ModelsTeachers::where('id', $id)->update($data);
         return redirect('/teachers');
     }
 
