@@ -75,9 +75,10 @@ class Disciplines extends Controller
      */
     public function edit($id)
     {
-        $discipline=ModelsTeachers::where('id',$id)->first();
+        $model=new ModelsDisciplines();
+        $discipline=$model->getAllById($id);
         $teachers=ModelsTeachers::get();
-        return view('edit-discipline', ['discipline'=>$discipline,'teachers'=>$teachers]);
+        return view('edit-discipline',['discipline'=>$discipline,'teachers'=>$teachers]);
     }
 
     /**
@@ -89,11 +90,11 @@ class Disciplines extends Controller
      */
     public function update(Request $request, $id)
     {
-        $disciplines = ModelsDisciplines::find($id);
-        $disciplines->name = $request->name;
-        $disciplines->hours = $request->hours;
-        $disciplines->teacher = $request->teacher;
-        $disciplines->save();
+        $discipline = ModelsDisciplines::find($id);
+        $discipline->name = $request->name;
+        $discipline->hours = $request->hours;
+        $discipline->teacher = $request->teacher; 
+        $discipline->save();
         return redirect('/disciplines');
     }
 

@@ -10,10 +10,7 @@
 </head>
 
 <x-header/>
-<?php
-    var_dump($students);
-?>
-<form action="/teachers" method="post">
+<form action="/students" method="post">
     <h1>Alunos</h1>
     @csrf
     <table>
@@ -28,30 +25,23 @@
                 <th>Excluir</th>
             </tr>
         </theader>
+
+        @foreach ($students as $student)
+            <tr>
+                <td class='td'>{{$student->id}}</td>
+                <td class='td'>{{$student->name}}</td>
+                <td class='td'>{{$student->email}}</td>
+                <td class='td'>{{$student->DisciplineQt}}</td>
+                <td class='td'>{{$student->ch}}</td>
+                <td class='td'><a href='/students/edit/{{$student->id}}'><img class='plus-button-img' src=/imgs/edit.png></a></td>
+                <td class='td'><a href='/students/delete/{{$student->id}}'><img class='plus-button-img' src=/imgs/minus.png></a></td>
+            <tr>      
+        @endforeach
+        
         <tr>
-            <td class='td'>11030336</td>
-            <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
-            <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'><a href='/students/edit/1'><img class='plus-button-img' src=/imgs/edit.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-        <tr>
-        <tr>
-            <td class='td'>11030336</td>
-            <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
-            <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-        <tr>
-        <tr>
-            <td class='td-insert'><input type="text" required name="matricula" placeholder="Matrícula"></td>
-            <td class='td-insert'><input type="text" required name="nome" placeholder="Nome"></td>
+            <td class='td-insert'><input type="text" required name="name" placeholder="Nome"></td>
             <td class='td-insert'><input type="email" required name="email" placeholder="Email"></td>
             <td class='td-insert'></td>
-            <td class='td-insert'><input type="numero" class="inumber" required name="carga" placeholder="00"> horas</td>
             <td class='td-insert'></td>
             <td class='td-insert'></td>
         <tr>

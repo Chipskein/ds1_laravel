@@ -14,6 +14,11 @@ class Students extends Model
         'name',
         'email',
     ];
+    
+    protected $table='Students';
+    
+    public $timestamps=false;
+
     public function getAll(){
         $students=DB::table("Students")
         ->leftjoin('Disciplines_Students as ds','Students.id','=','ds.student')

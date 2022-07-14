@@ -30,9 +30,11 @@ Route::controller(Teachers::class)->group(function () {
 Route::controller(Students::class)->group(function () {
     Route::get("/students", "index");
     Route::get("/students/{id}", "show");
+    Route::post("/students", "create");
     Route::get("/students/edit/{id}","edit");
-
+    Route::post("/students/edit/{id}","update");
     Route::post("/students","create");
+    Route::get("/students/delete/{id}","delete");
 });
 Route::controller(Disciplines::class)->group(function () {
     Route::get("/disciplines", "index");
