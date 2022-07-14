@@ -23,9 +23,15 @@ class Students extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $data=[
+            $name=$request->name,
+            $email=$request->email,
+        ];
+        $student=ModelsStudents::create($data)->id;
+        return redirect('/students');
     }
 
     /**
@@ -34,10 +40,7 @@ class Students extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
     /**
      * Display the specified resource.
