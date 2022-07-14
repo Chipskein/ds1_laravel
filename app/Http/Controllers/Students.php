@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Students as ModelsStudents;
+use App\Models\Avaliations as ModelsAvaliations;
+use App\Models\Classes;
 class Students extends Controller
 {
     /**
@@ -83,8 +85,11 @@ class Students extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        ModelsAvaliations::where('student',$id)->delete();
+        Classes::where('student',$id)->delete();
+        ModelsStudents::where('id',$id)->delete();
+        return redirect('/students');
     }
 }
