@@ -20,6 +20,7 @@
 <x-header/>
 
 <form action="/disciplines/edit/{{$discipline->id}}" method="post">
+    @csrf
     <p>Nome</p><input type="text" name="name" value="{{$discipline->name}}">
     <p>Professor</p>
     <select name="teacher" >
