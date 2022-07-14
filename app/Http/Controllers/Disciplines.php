@@ -90,7 +90,13 @@ class Disciplines extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $discipline = ModelsDisciplines::find($id);
+        $discipline->name = $request->name;
+        $discipline->hours = $request->hours;
+        $discipline->teacher = $request->teacher; 
+        $discipline->save();
+        return redirect('/disciplines');
     }
 
     /**

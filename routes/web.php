@@ -39,6 +39,7 @@ Route::controller(Disciplines::class)->group(function () {
     Route::get("/disciplines", "index");
     Route::get("/disciplines/{id}", "show");
     Route::get("/disciplines/edit/{id}","edit");
+    Route::get("/disciplines/edit/{id}","update");
     Route::post("/disciplines","create");
     Route::get("/disciplines/delete/{id}","delete");
 });

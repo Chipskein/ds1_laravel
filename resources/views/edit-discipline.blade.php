@@ -19,10 +19,7 @@
 
 <x-header/>
 
-<?php
-    var_dump($discipline);
-?>
-<form action="/discipline" method="post">
+<form action="/disciplines/edit/{{$discipline->id}}" method="post">
     <p>Nome</p><input type="text" name="name" value="{{$discipline->name}}">
     <p>Professor</p>
     <select name="teacher" >
