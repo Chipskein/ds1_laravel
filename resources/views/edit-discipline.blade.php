@@ -19,7 +19,6 @@
 <body>
     
 
-<<<<<<< HEAD
 <x-header/>
 
 <form action="/disciplines/edit/{{$discipline->id}}" method="post">
@@ -40,9 +39,6 @@
     <p>Carga horária</p><input type="text" name="hours" value="{{$discipline->hours}}">
     <input type="submit" value="Enviar">
 </form>
-=======
-    <x-header/>
->>>>>>> ad32c76b57538d25e2fccc0d2b604358d4b3ebc7
 
     <form action="/disciplines/edit/{id}" method="post">
         <p>Nome</p>
