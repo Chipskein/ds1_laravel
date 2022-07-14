@@ -41,11 +41,8 @@ class Disciplines extends Controller
             'hours'=>$request->hours,
             'teacher'=>$request->teacher,
         ];
-        echo "<pre>";
-            var_dump($request);
-        echo "</pre>";
-        //$DisciplineId=ModelsDisciplines::create($data)->id;
-        //return redirect('/discipline');
+        $DisciplineId=ModelsDisciplines::create($data)->id;
+        return redirect('/disciplines');
     }
 
     /**

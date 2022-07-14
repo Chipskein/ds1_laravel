@@ -10,6 +10,7 @@ class Disciplines extends Model
 {
     use HasFactory;
     protected $table = 'Disciplines';
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'teacher',

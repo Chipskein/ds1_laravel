@@ -33,10 +33,10 @@
         @endforeach
         <tr>
             <td class='td-insert'><input type="text" required name="name" placeholder="Nome"></td>
-            <td class='td-insert'><input type="hours" class="inumber" required name="carga" placeholder="00"> horas
+            <td class='td-insert'><input type="hours" class="inumber" required name="hours" placeholder="00"> horas
             </td>
             <td class='td-insert'>
-                <select id="teacher">
+                <select id="teacher" name="teacher">
                     @foreach ( $teachers as $teacher )
                         <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                     @endforeach                    
