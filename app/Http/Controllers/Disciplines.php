@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Disciplines as ModelsDisciplines;
+use App\Models\Disciplines_Students as ModelsDisciplineStudents;
 use App\Models\Teachers as ModelsTeachers;
 class Disciplines extends Controller
 {
@@ -20,14 +21,31 @@ class Disciplines extends Controller
         return view('show-disciplines',['teachers'=>$teachers,'disciplines'=>$disciplines]);
     }
 
+    public function delete($id)
+    {
+        ModelsDisciplineStudents::where('discipline',$id)->delete();
+        ModelsDisciplines::where('id',$id)->delete();
+        return redirect('/disciplines');
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+
+        $data=[
+            'name'=>$request->name,
+            'hours'=>$request->hours,
+            'teacher'=>$request->teacher,
+        ];
+        echo "<pre>";
+            var_dump($request);
+        echo "</pre>";
+        //$DisciplineId=ModelsDisciplines::create($data)->id;
+        //return redirect('/discipline');
     }
 
     /**

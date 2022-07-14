@@ -9,7 +9,7 @@
 </head>
 
 <x-header />
-<form action="/teachers" method="post">
+<form action="/disciplines" method="post">
     <h1>Disciplinas</h1>
     @csrf
     <table>
@@ -28,15 +28,15 @@
                 <td class='td'>{{$discipline->hours}}</td>
                 <td class='td'>{{$discipline->TeacherName}}</td>
                 <td class='td'><a href='/disciplines/edit/{{$discipline->id}}'><img class='plus-button-img' src=/imgs/edit.png> </a> </td> 
-                <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png> </a> </td> 
+                <td class='td'><a href='/disciplines/delete/{{$discipline->id}}'><img class='plus-button-img' src=/imgs/minus.png> </a> </td> 
             </tr>     
         @endforeach
         <tr>
-            <td class='td-insert'><input type="text" required name="nome" placeholder="Nome"></td>
-            <td class='td-insert'><input type="numero" class="inumber" required name="carga" placeholder="00"> horas
+            <td class='td-insert'><input type="text" required name="name" placeholder="Nome"></td>
+            <td class='td-insert'><input type="hours" class="inumber" required name="carga" placeholder="00"> horas
             </td>
             <td class='td-insert'>
-                <select id="browsers">
+                <select id="teacher">
                     @foreach ( $teachers as $teacher )
                         <option value="{{$teacher->id}}">{{$teacher->name}}</option>
                     @endforeach                    
