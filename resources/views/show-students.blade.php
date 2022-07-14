@@ -29,15 +29,6 @@
             </tr>
         </theader>
 
-        <tr>
-            <td class='td'>11030336</td>
-            <td class='td'>Silvio</td>
-            <td class='td'>Silvioquintana1@htomail.com</td>
-            <td class='td'>10</td>
-            <td class='td'>10 horas</td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/edit.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-        <tr>
         @foreach ($students as $student)
             <tr>
                 <td class='td'>{{$student->id}}</td>
