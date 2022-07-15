@@ -13,10 +13,11 @@
 
 #### Responder as perguntas: 
 
-* (i)O professor fulano ministra aulas para o aluno ciclano?
-* (ii) Listar disciplinas de um dado professor
-* (iii) listar todos os alunos de um professor
-* (iv) apresentar o aluno quie tirou a nota mais alta
-* (v) quais disciplinas de um dado aluno?
+* (i)O professor fulano ministra aulas para o aluno ciclano?[...]
+* (iii) listar todos os alunos de um professor[...]
+
+* (ii) Listar disciplinas de um dado professor[OK]
+* (iv) apresentar o aluno quie tirou a nota mais alta[...]
+* (v) quais disciplinas de um dado aluno?[OK]
 
 #### Se o aluno observou que faltou alguma inforamção, por favor, faz parte do enunciado ajustar e observar possíveis gaps no exercício. 
