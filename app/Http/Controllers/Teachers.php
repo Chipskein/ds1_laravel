@@ -36,7 +36,8 @@ class Teachers extends Controller
     public function delete($id)
     {
         $discipline_id=[];
-        $teachersDisciplines=ModelsDisciplines::where('teacher',$id)->get();
+        $teacherModel=ModelsDisciplines::where('teacher',$id);
+        $teachersDisciplines=$teacherModel->get();
         foreach($teachersDisciplines as $discipline){
             array_push($discipline_id,$discipline->id);
         }
@@ -44,7 +45,7 @@ class Teachers extends Controller
         Classes::whereIn('discipline',$discipline_id)->delete();
         Avaliations::whereIn('discipline',$discipline_id)->delete();
         ModelsDisciplineStudents::whereIn('discipline',$discipline_id)->delete();
-        $teachersDisciplines->delete();
+        $teacherModel->delete();
         ModelsTeachers::where('id',$id)->delete();
         return redirect('/teachers');
     }
