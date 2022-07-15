@@ -42,6 +42,17 @@ class Disciplines_Students extends Model
         ->get(); 
         return $disciplineStudents;
     }
+    public function getById($id, $student)
+    {
+        $disciplineStudents=DB::table("Disciplines_Students")
+        ->leftjoin('Disciplines','Disciplines.id','=','Disciplines_Students.discipline')
+        ->leftjoin('Students','Students.id','=','student')
+        ->where('Disciplines_Students.discipline',$id)
+        ->where('Disciplines_Students.student',$student)
+        ->select('Disciplines_Students.*','Disciplines.name as DisciplineName','Students.name as StudentName')
+        ->first(); 
+        return $disciplineStudents;
+    }
     public function getTeacher($name)
     {
         $disciplineStudents=DB::table("Disciplines_Students")

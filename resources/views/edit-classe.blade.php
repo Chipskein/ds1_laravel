@@ -19,13 +19,12 @@
 
 <x-header/>
 
-<form action="/classes/edit/7/28" method="post">
+<form action="/classes/edit/{{$classes->discipline}}/{{$classes->student}}" method="post">
     @csrf
-    <p>Aluno: {{$classes}}</p>
     <p>Nota Final</p>
-    <input type="text" name="final_note">
+    <input type="number" name="final_note" value="{{$classes->final_note}}">
     <p>Frequencia</p>
-    <input type="text" name="final_freq">
+    <input type="number" name="final_freq" value="{{$classes->final_freq}}">
 
     <input type="submit" value="Enviar">
 </form>

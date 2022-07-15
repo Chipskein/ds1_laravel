@@ -61,8 +61,8 @@ class Avaliations extends Controller
     public function edit($id, $student)
     {
         $model=new ModelsDisciplineStudents();
-        $classes=$model->getAllById($id, $student);
-        return view('edit-classe',['classes'=>$classes]);
+        $classe=$model->getById($id, $student);
+        return view('edit-classe',['classes'=>$classe]);
     }
 
     /**

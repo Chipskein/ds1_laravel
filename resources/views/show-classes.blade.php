@@ -9,9 +9,8 @@
 </head>
 
 <x-header/>
-<p>{{$classes}}</p>
     <h1>Avaliações de alunos</h1>
-        <a class='list' href="{{url('/classes')}}">lista completa</a>
+        <a class='list' href="{{url('/students')}}">lista completa</a>
     <form method='get' action="/classes" >
         <input name='searchTeacher' placeholder='professor' />
         <button>Pesquisar</button>
