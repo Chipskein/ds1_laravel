@@ -96,11 +96,17 @@ class Students extends Controller
         $modelDS=new Disciplines_Students();
         $studentdata = ['name' => $request->name,'email' => $request->email,];
         $discipline_ids=[];
+        $disciplinesIds_To_CalculateHours=[];
         foreach ($_POST as $disciplineCheck => $switch){
             if(preg_match("/disciplineCheck[0-9]*/",$disciplineCheck)){
                 $tmp=explode("disciplineCheck",$disciplineCheck);
                 $disciplineId=$tmp[1];
-                if($switch=='on') array_push($discipline_ids,$disciplineId);
+                if($switch=='on') {
+                    array_push($discipline_ids,$disciplineId);
+                    if(!in_array($disciplineId,$olddiscipline_ids)){
+                        array_push($disciplinesIds_To_CalculateHours,$disciplineId);
+                    };
+                }
             }
         }        
         $disciplinesToRemove=[];
@@ -113,13 +119,15 @@ class Students extends Controller
         Disciplines_Students::where('student','=',$id)->whereIn('discipline',$disciplinesToRemove)->delete();
 
         $ch=$modelStudent->calculateStudentsHours($id);
-        if($ch<=$MAX_HOURS_STUDENT || $ch==false)
+        $hoursNewDisciplines=$modelDS->sumofHoursByDisciplines($disciplinesIds_To_CalculateHours);
+        $verifyCalc=$ch+$hoursNewDisciplines;
+        if($verifyCalc<=$MAX_HOURS_STUDENT)
         {
             $modelDS->MatriculateToDiscipline($discipline_ids,$id);   
             ModelsStudents::where('id',$id)->update($studentdata);
             return redirect('/students/');
         } else {
-            return redirect('/students/edit/$id');
+            return redirect('/students/');
         }
     }
 

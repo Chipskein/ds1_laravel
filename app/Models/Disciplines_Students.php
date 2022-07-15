@@ -61,4 +61,14 @@ class Disciplines_Students extends Model
         }
         DB::table('Disciplines_Students')->upsert($data,['start_date', 'end_date']);
     }
+    public function sumofHoursByDisciplines($discipline_ids){
+        $query=DB::table('Disciplines')
+        ->whereIn('Disciplines.id',$discipline_ids)
+        ->select(DB::raw("SUM(Disciplines.hours) as ch"))
+        ->first();
+        ;
+        if(!is_null($query)&&!is_null($query->ch)) return $query->ch;
+        else return false;
+
+    }
 }
