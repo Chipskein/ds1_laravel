@@ -67,11 +67,13 @@ class Students extends Controller
     {
         $student=ModelsStudents::where('id',$id)->first();
         $model=new ModelsDisciplines();
-        // $modelDiscStudent=new Disciplines_Students();
-        // $disciplineStudents = $modelDiscStudent->getAll();
         $disciplines=$model->getAll();
-
-        return view('edit-student',['disciplines'=>$disciplines, 'student'=>$student]);
+        $matriculatedId=[];
+        $tmp=Disciplines_Students::where('student',$id)->get();
+        foreach ($tmp as $discipline){
+            array_push($matriculatedId,$discipline->discipline);
+        }
+        return view('edit-student',['disciplines'=>$disciplines,'matriculatedId'=>$matriculatedId,'student'=>$student]);
     }
 
     /**
@@ -83,23 +85,42 @@ class Students extends Controller
      */
     public function update(Request $request, $id)
     {
-        $modelDiscipline=new ModelsDisciplines();
-
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-        ];
-
-        //ModelsStudents::where('id',$id)->update($data);
+        $MAX_HOURS_STUDENT=50;
+        $olddiscipline_ids=[];
+        $tmp=Disciplines_Students::where('student',$id)->get();
+        foreach ($tmp as $discipline){ 
+            array_push($olddiscipline_ids,$discipline->discipline);
+        }
         
-        $disciplines = $modelDiscipline->getAll();
-        $discRequest = [];
-        foreach ($disciplines as $value) {
-            if($_POST["disciplineCheck$value->id"]){
-                $discRequest[] = $_POST["disciplineCheck$value->id"];
+        $modelStudent=new ModelsStudents();
+        $modelDS=new Disciplines_Students();
+        $studentdata = ['name' => $request->name,'email' => $request->email,];
+        $discipline_ids=[];
+        foreach ($_POST as $disciplineCheck => $switch){
+            if(preg_match("/disciplineCheck[0-9]*/",$disciplineCheck)){
+                $tmp=explode("disciplineCheck",$disciplineCheck);
+                $disciplineId=$tmp[1];
+                if($switch=='on') array_push($discipline_ids,$disciplineId);
+            }
+        }        
+        $disciplinesToRemove=[];
+        foreach ($olddiscipline_ids as $disciplineId){
+            if(!in_array($disciplineId,$discipline_ids)){
+                array_push($disciplinesToRemove,$disciplineId);
             }
         }
-        print_r($discRequest);
+        
+        Disciplines_Students::where('student','=',$id)->whereIn('discipline',$disciplinesToRemove)->delete();
+
+        $ch=$modelStudent->calculateStudentsHours($id);
+        if($ch<=$MAX_HOURS_STUDENT || $ch==false)
+        {
+            $modelDS->MatriculateToDiscipline($discipline_ids,$id);   
+            ModelsStudents::where('id',$id)->update($studentdata);
+            return redirect('/students/');
+        } else {
+            return redirect('/students/edit/$id');
+        }
     }
 
     /**
@@ -112,6 +133,7 @@ class Students extends Controller
     {
         ModelsAvaliations::where('student',$id)->delete();
         Classes::where('student',$id)->delete();
+        Disciplines_Students::where('student',$id)->delete();
         ModelsStudents::where('id',$id)->delete();
         return redirect('/students');
     }

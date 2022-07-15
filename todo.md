@@ -2,12 +2,14 @@
 
 #### Desenvolver um sistema acadêmico simples, sem login:
 
-* Realizar um cadastro simples de disciplinas, carga horária.
-* Realizar cadastro de alunos, email, com matricula, nome.
-* Realizar o cadastro de professores. 
-* Alocar professores as suas disciplinas
-* Cada aluno deve ser matriculado às disciplinas. 
-* Cada disciplina terá apenas a média final e frequencia. Apresentar se o aluno foi reprovado ou aprovado,ou rep por frequencia. Não deixar matricular o aluno com carga horária maior que 50. 
+* Realizar um cadastro simples de disciplinas, carga horária [OK].
+* Realizar cadastro de alunos, email, com matricula, nome [OK].
+* Realizar o cadastro de professores [OK]. 
+* Alocar professores as suas disciplinas[OK]
+* Cada aluno deve ser matriculado às disciplinas [OK]. 
+* Cada disciplina terá apenas a média final e frequencia [...]. 
+* Apresentar se o aluno foi reprovado ou aprovado,ou rep por frequencia [...]. 
+***Não deixar matricular o aluno com carga horária maior que 50[OK]. 
 
 #### Responder as perguntas: 
 

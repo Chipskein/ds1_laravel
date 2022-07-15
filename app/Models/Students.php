@@ -28,4 +28,15 @@ class Students extends Model
         ->get(); 
         return $students;
     }
+    public function calculateStudentsHours($studentId){
+        $students=DB::table("Students")
+        ->join('Disciplines_Students as ds','Students.id','=','ds.student')
+        ->join('Disciplines','ds.discipline','=','Disciplines.id')
+        ->groupBy('Students.id')
+        ->where('Students.id','=',$studentId)
+        ->select('Students.id',DB::raw("SUM(Disciplines.hours) as ch"))
+        ->first(); 
+        if(!is_null($students)&&!is_null($students->ch)) return $students->ch;
+        else return false;
+    }
 }

@@ -31,7 +31,13 @@
     <div id="discipline-list">
         <ul>
             @foreach ( $disciplines as $discipline )
-                <li><input type="checkbox" name="disciplineCheck{{$discipline->id}}" id=""> {{$discipline->name}} ({{$discipline->TeacherName}}) - {{$discipline->hours}} hrs</li>
+                <li>    
+                    @if (in_array($discipline->id,$matriculatedId))
+                        <input checked type="checkbox" name="disciplineCheck{{$discipline->id}}" id=""> {{$discipline->name}} ({{$discipline->TeacherName}}) - {{$discipline->hours}} hrs
+                    @else
+                        <input type="checkbox" name="disciplineCheck{{$discipline->id}}" id=""> {{$discipline->name}} ({{$discipline->TeacherName}}) - {{$discipline->hours}} hrs
+                    @endif
+                </li>
             @endforeach
         </ul>
     </div>
