@@ -45,12 +45,14 @@ Route::controller(Disciplines::class)->group(function () {
 });
 Route::controller(Classes::class)->group(function () {
     Route::get("/classes", "index");
-    Route::get("/classes/edit/{id}/{student}","edit");
-    Route::post("/classes/edit/{id}/{student}","update");
+    // Route::get("/classes/edit/{id}/{student}","edit");
+    // Route::post("/classes/edit/{id}/{student}","update");
     Route::get("/classes/{id}", "show");
     Route::post("/classes","create");
 });
 Route::controller(Avaliations::class)->group(function () {
+    Route::get("/classes/edit/{id}/{student}","edit");
+    Route::post("/classes/edit/{id}/{student}","update");
     Route::get("/avaliations", "index");
     Route::get("/avaliations/{id}", "show");
     Route::post("/avaliations","create");
