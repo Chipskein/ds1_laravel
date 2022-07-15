@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\DB;
 class Disciplines_Students extends Model
 {
     use HasFactory;
     protected $table='Disciplines_Students';
+    public $timestamps=false;
     protected $fillable = [
         'discipline',
         'student',
