@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avaliations as ModelsAvaliations;
 use App\Models\Classes;
 use App\Models\Students;
+use App\Models\Disciplines_Students as ModelsDisciplineStudents;
 use Illuminate\Http\Request;
 
 class Avaliations extends Controller
@@ -57,9 +58,11 @@ class Avaliations extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $student)
     {
-        //
+        $model=new ModelsDisciplineStudents();
+        $classes=$model->getAllById($id, $student);
+        return view('edit-classe',['classes'=>$classes]);
     }
 
     /**
@@ -69,9 +72,15 @@ class Avaliations extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id, $student)
+    { 
+        $data=[
+            'final_note' => $request->final_note,
+            'final_freq' => $request->final_freq,
+        ];
+        
+        ModelsDisciplineStudents::where('student', $student)->where('discipline', $id)->update(data);
+        return redirect('/classes');
     }
 
     /**
