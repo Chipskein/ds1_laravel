@@ -47,7 +47,7 @@
         <a href="{{url('/students')}}" class='navItem'>Alunos</a>
         <a href="{{url('/teachers')}}" class='navItem'>Professores</a>
         <a href="{{url('/disciplines')}}" class='navItem'>Disciplinas</a>
-        <a href="{{url('/classes')}}" class='navItem'>Turmas</a>
+        <a href="{{url('/classes')}}" class='navItem'>Avaliações</a>
     </div>
     </div>
 </header>

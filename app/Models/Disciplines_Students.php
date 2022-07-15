@@ -26,7 +26,8 @@ class Disciplines_Students extends Model
         $disciplineStudents=DB::table("Disciplines_Students")
         ->leftjoin('Disciplines','Disciplines.id','=','Disciplines_Students.discipline')
         ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
-        ->select('*')
+        ->leftjoin('Students','Students.id','=','student')
+        ->select('Disciplines_Students.*','Teachers.name as TeacherName','Disciplines.name as DisciplineName','Students.name as StudentName')
         ->get(); 
         return $disciplineStudents;
     }
@@ -37,6 +38,16 @@ class Disciplines_Students extends Model
         ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
         ->where('Disciplines_Students.student',$id)
         ->select('*')
+        ->get(); 
+        return $disciplineStudents;
+    }
+    public function getTeacher($id)
+    {
+        $disciplineStudents=DB::table("Disciplines_Students")
+        ->leftjoin('Disciplines','Disciplines.id','=','Disciplines_Students.discipline')
+        ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
+        ->where('Teachers.name',$id)
+        ->select('Disciplines_Students.*','Teachers.name as TeacherName','Disciplines.name as DisciplineName','Students.name as StudentName')
         ->get(); 
         return $disciplineStudents;
     }

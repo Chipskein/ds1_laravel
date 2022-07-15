@@ -9,61 +9,38 @@
 </head>
 
 <x-header/>
-
-<form action="/teachers" method="post">
-    <h1>Turmas</h1>
+<p>{{$classes}}</>
+    <h1>Avaliações de alunos</h1>
+    <form method='get' action="/classes" >
+        <input name='search' placeholder='professor' />
+        <button>Pesquisar</button>
     @csrf
     <table>
         <theader>
             <tr>
-                <th>Nome</th>
                 <th>Disciplina</th>
                 <th>Professor</th>
-                <th>Nº de alunos</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-                <th>Ver mais</th>
+                <th>aluno</th>
+                <th>Data inicial</th>
+                <th>Data Final</th>
+                <th>Nota</th>
+                <th>Frequencia</th>
+                <th>Editar nota e frequencia</th>
             </tr>
         </theader>
-        <tr>
-            <td class='td'>4C</td>
-            <td class='td'>Math</td>
-            <td class='td'>Ciro</td>
-            <td class='td'>10</td>
-            <td class='td'><a href='/classes/edit/1'><img class='plus-button-img' src=/imgs/edit.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/minus.png></a></td>
-            <td class='td'><a><img class='plus-button-img' src=/imgs/plus.png></a></td>      
-        </tr> 
-        <tr>
-            <td class='td'>4C</td>
-            <td class='td-insert'><input type="text" required name="nome" placeholder="Nome turma"></td>
-            <td class='td'>
-                <input list="discp" name="disciplina" id="browser">
-                <datalist id="discp">
-                    <option value="Edge">
-                    <option value="Firefox">
-                    <option value="Chrome">
-                    <option value="Opera">
-                    <option value="Safari">
-                </datalist>
-            </td>
-            <td class='td'>
-                <input list="prof" name="prof" id="browser">
-                <datalist id="prof">
-                    <option value="Edge">
-                    <option value="Firefox">
-                    <option value="Chrome">
-                    <option value="Opera">
-                    <option value="Safari">
-                </datalist>
-            </td>
-            <td class='td'></td>
-            <td class='td'></td>
-            <td class='td'></td>
-        </tr> 
+        @foreach ( $classes as $classe )
+            <tr>
+                <td class='td'>{{$classe->DisciplineName}}</td>
+                <td class='td'>{{$classe->TeacherName}}</td>
+                <td class='td'>{{$classe->StudentName}}</td>
+                <td class='td'>{{$classe->start_date}}</td>
+                <td class='td'>{{$classe->end_date}}</td>
+                <td class='td'>{{$classe->final_note}}</td>
+                <td class='td'>{{$classe->final_freq}}</td>
+                <td class='td'><a href='/classes/edit/{{$classe->DisciplineName}}'><img class='plus-button-img' src=/imgs/edit.png> </a> </td> 
+            </tr>     
+        @endforeach
         
    </table>
-   <input type="submit" class="button" value="Criar nova turma">
-</form>
-
+    </form>
 </html>

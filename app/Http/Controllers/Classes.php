@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Disciplines_Students as ModelsDisciplineStudents;
+
 class Classes extends Controller
 {
     /**
@@ -11,9 +13,17 @@ class Classes extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('show-classes');
+        if($request){ 
+            $model=new ModelsDisciplineStudents();
+            $classes=$model->getTeacher($request->search);
+            return view('show-classes',['classes'=>$classes]);
+        }else{
+            $model=new ModelsDisciplineStudents();
+            $classes=$model->getAll();
+            return view('show-classes',['classes'=>$classes]);
+        }
     }
 
     /**
