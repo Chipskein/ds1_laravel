@@ -90,7 +90,7 @@ class Classes extends Controller
             'final_freq' => $request->final_freq,
         ];
         
-        ModelsDisciplineStudents::where('student', $student)->where('discipline', $id)->update(data);
+        ModelsDisciplineStudents::where('student', $student)->where('discipline', $id)->update($data);
         return redirect('/classes');
     }
 
