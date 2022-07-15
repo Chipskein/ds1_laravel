@@ -31,22 +31,35 @@ class Disciplines_Students extends Model
         ->get(); 
         return $disciplineStudents;
     }
-    public function getAllById($id)
+    public function getAllById($id, $student)
     {
         $disciplineStudents=DB::table("Disciplines_Students")
         ->leftjoin('Disciplines','Disciplines.id','=','Disciplines_Students.discipline')
-        ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
-        ->where('Disciplines_Students.student',$id)
-        ->select('*')
+        ->leftjoin('Students','Students.id','=','student')
+        ->where('Disciplines_Students.discipline',$id)
+        ->where('Disciplines_Students.student',$student)
+        ->select('Disciplines_Students.*','Disciplines.name as DisciplineName','Students.name as StudentName')
         ->get(); 
         return $disciplineStudents;
     }
-    public function getTeacher($id)
+    public function getTeacher($name)
     {
         $disciplineStudents=DB::table("Disciplines_Students")
         ->leftjoin('Disciplines','Disciplines.id','=','Disciplines_Students.discipline')
         ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
-        ->where('Teachers.name',$id)
+        ->leftjoin('Students','Students.id','=','student')
+        ->where('Teachers.name',$name)
+        ->select('Disciplines_Students.*','Teachers.name as TeacherName','Disciplines.name as DisciplineName','Students.name as StudentName')
+        ->get(); 
+        return $disciplineStudents;
+    }
+    public function getStudent($name)
+    {
+        $disciplineStudents=DB::table("Disciplines_Students")
+        ->leftjoin('Disciplines','Disciplines.id','=','Disciplines_Students.discipline')
+        ->leftjoin('Teachers','Teachers.id','=','Disciplines.teacher')
+        ->leftjoin('Students','Students.id','=','student')
+        ->where('Students.name',$name)
         ->select('Disciplines_Students.*','Teachers.name as TeacherName','Disciplines.name as DisciplineName','Students.name as StudentName')
         ->get(); 
         return $disciplineStudents;

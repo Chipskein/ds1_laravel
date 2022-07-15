@@ -9,11 +9,17 @@
 </head>
 
 <x-header/>
-<p>{{$classes}}</>
+<p>{{$classes}}</p>
     <h1>Avaliações de alunos</h1>
+        <a class='list' href="{{url('/classes')}}">lista completa</a>
     <form method='get' action="/classes" >
-        <input name='search' placeholder='professor' />
+        <input name='searchTeacher' placeholder='professor' />
         <button>Pesquisar</button>
+    </form>
+    <form method='get' action="/classes" >
+        <input name='searchStudent' placeholder='estudante' />
+        <button>Pesquisar</button>
+    </form>
     @csrf
     <table>
         <theader>
@@ -37,10 +43,10 @@
                 <td class='td'>{{$classe->end_date}}</td>
                 <td class='td'>{{$classe->final_note}}</td>
                 <td class='td'>{{$classe->final_freq}}</td>
-                <td class='td'><a href='/classes/edit/{{$classe->DisciplineName}}'><img class='plus-button-img' src=/imgs/edit.png> </a> </td> 
+                <td class='td'><a href='/classes/edit/{{$classe->discipline}}/{{$classe->student}}'><img class='plus-button-img' src=/imgs/edit.png> </a> </td> 
             </tr>     
         @endforeach
         
    </table>
-    </form>
+
 </html>

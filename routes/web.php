@@ -45,7 +45,8 @@ Route::controller(Disciplines::class)->group(function () {
 });
 Route::controller(Classes::class)->group(function () {
     Route::get("/classes", "index");
-    Route::get("/classes/edit/{id}","edit");
+    Route::get("/classes/edit/{id}/{student}","edit");
+    Route::post("/classes/edit/{id}/{student}","update");
     Route::get("/classes/{id}", "show");
     Route::post("/classes","create");
 });

@@ -15,11 +15,16 @@ class Classes extends Controller
      */
     public function index(Request $request)
     {
-        if($request){ 
+        if($request->searchTeacher){ 
             $model=new ModelsDisciplineStudents();
-            $classes=$model->getTeacher($request->search);
+            $classes=$model->getTeacher($request->searchTeacher);
             return view('show-classes',['classes'=>$classes]);
-        }else{
+        }else if ($request->searchStudent){ 
+            $model=new ModelsDisciplineStudents();
+            $classes=$model->getStudent($request->searchStudent);
+            return view('show-classes',['classes'=>$classes]);
+        }
+        else{
             $model=new ModelsDisciplineStudents();
             $classes=$model->getAll();
             return view('show-classes',['classes'=>$classes]);
@@ -64,9 +69,11 @@ class Classes extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $student)
     {
-        return view('edit-classe');
+        $model=new ModelsDisciplineStudents();
+        $classes=$model->getAllById($id, $student);
+        return view('edit-classe',['classes'=>$classes]);
     }
 
     /**
@@ -76,9 +83,15 @@ class Classes extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id, $student)
+    { 
+        $data=[
+            'final_note' => $request->final_note,
+            'final_freq' => $request->final_freq,
+        ];
+        
+        ModelsDisciplineStudents::where('student', $student)->where('discipline', $id)->update(data);
+        return redirect('/classes');
     }
 
     /**

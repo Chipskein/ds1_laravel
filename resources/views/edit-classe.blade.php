@@ -19,15 +19,13 @@
 
 <x-header/>
 
-<form action="/teachers" method="post">
-    <p>Nome</p>
-    <input type="text" name="name">
-    <p>Disciplinas</p>
-    <select name="discipline" id=""><option>não sei</option></select>
-    <p>Professor</p>
-    <select name="teacher" id=""><option>não sei</option></select>
-    <p>Alunos (Vamos ter que fazer tipo uma tabela de alunos aqui dentro e ele pode tirar e add quem ele quiser)</p>
-    <select name="teacher" id=""><option>não sei</option></select>
+<form action="/classes/edit/7/28" method="post">
+    <p>Aluno: {{$classes}}</p>
+    <p>Nota Final</p>
+    <input type="text" name="final_note">
+    <p>Frequencia</p>
+    <input type="text" name="final_freq">
+
     <input type="submit" value="Enviar">
 </form>
 
