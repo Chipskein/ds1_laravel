@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',"App\Http\Controllers\PageController@showHome");
 Route::controller(Teachers::class)->group(function () {
     Route::get("/teachers", "index");
     Route::post("/teachers","create");
@@ -56,4 +55,6 @@ Route::controller(Avaliations::class)->group(function () {
     Route::post("/avaliations","create");
 });
 
-
+Route::fallback(function () {
+    return redirect('/teachers');
+});

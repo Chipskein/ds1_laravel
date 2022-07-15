@@ -90,12 +90,13 @@ class Students extends Controller
             'email' => $request->email,
         ];
 
-        ModelsStudents::where('id',$id)->update($data);
+        //ModelsStudents::where('id',$id)->update($data);
+        
         $disciplines = $modelDiscipline->getAll();
         $discRequest = [];
         foreach ($disciplines as $value) {
-            if($request["disciplineCheck$value[id]"]){
-                $discRequest[] = $request["disciplineCheck$value[id]"];
+            if($_POST["disciplineCheck$value->id"]){
+                $discRequest[] = $_POST["disciplineCheck$value->id"];
             }
         }
         print_r($discRequest);

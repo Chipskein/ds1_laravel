@@ -20,19 +20,13 @@
 <x-header/>
 
 <form action="/students/edit/{{$student->id}}" method="post">
+    @csrf
     <p>Nome</p>
     <input type="text" value='{{$student->name}}' name="name">
 
     <p>Email</p>
     <input type="text" value='{{$student->email}}' name="email">
 
-    <p>Disciplinas</p>
-    <select id="discipline">
-        @foreach ( $disciplines as $discipline )
-            <option value={{$discipline->id}}>{{$discipline->TeacherName}}</option>
-        @endforeach
-    </select>
-    <button type='button'>Adicionar</button>
 
     <div id="discipline-list">
         <ul>
