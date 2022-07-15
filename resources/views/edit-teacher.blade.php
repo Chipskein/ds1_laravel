@@ -19,6 +19,7 @@
 
 <x-header/>
 <form action="/teachers/edit/{{$teacher->id}}" method="post">
+    @csrf
     <p>Nome</p>
     <input type="text" name="name" value='{{$teacher->name}}'>
     <p>Email</p>

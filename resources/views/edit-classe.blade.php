@@ -20,6 +20,7 @@
 <x-header/>
 
 <form action="/classes/edit/7/28" method="post">
+    @csrf
     <p>Aluno: {{$classes}}</p>
     <p>Nota Final</p>
     <input type="text" name="final_note">

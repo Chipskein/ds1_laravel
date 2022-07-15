@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avaliations;
+use App\Models\Classes;
 use App\Models\Teachers as ModelsTeachers;
 use App\Models\Disciplines as ModelsDisciplines;
+use App\Models\Disciplines_Students as ModelsDisciplineStudents;
 use Illuminate\Http\Request;
 
 class Teachers extends Controller
@@ -32,7 +35,16 @@ class Teachers extends Controller
 
     public function delete($id)
     {
-        ModelsDisciplines::where('teacher',$id)->delete();
+        $discipline_id=[];
+        $teachersDisciplines=ModelsDisciplines::where('teacher',$id)->get();
+        foreach($teachersDisciplines as $discipline){
+            array_push($discipline_id,$discipline->id);
+        }
+
+        Classes::whereIn('discipline',$discipline_id)->delete();
+        Avaliations::whereIn('discipline',$discipline_id)->delete();
+        ModelsDisciplineStudents::whereIn('discipline',$discipline_id)->delete();
+        $teachersDisciplines->delete();
         ModelsTeachers::where('id',$id)->delete();
         return redirect('/teachers');
     }
